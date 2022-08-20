@@ -8,7 +8,9 @@
     --top-menu-bg: #0e9aa7;
     --sub-menu-bg: #3da4ab;
     }
-
+main{
+  height: 100vh;
+}
     body {
     font-family: Tahoma, Geneva, sans-serif;
     height: 100vh;
@@ -42,7 +44,7 @@
         background-color: var(--sub-menu-bg);
         }
         header, #top-menu {
-            position: absolute;
+            position: relative;
           }
           
           #top-menu {

@@ -38,7 +38,7 @@ var menuLinks = [
     newAnchor.textContent = link.text
     topMenuEl.appendChild(newAnchor)
   }
-  // 5.1
+  // 
   const subMenuEl = document.getElementById('sub-menu');
 
   subMenuEl.style.height = '100%';
@@ -51,45 +51,61 @@ var menuLinks = [
 
   subMenuEl.style.top = "0";
 
+// 5.1
   const topMenuLinks = document.querySelectorAll('top-menu-links a');
-  // 5.1
-  const showingSubMenu = false;
+
+  let showingSubMenu = false;
+
 // 5.2
+
   topMenuEl.addEventListener('click', function(ev) {
     ev.preventDefault();
+
     const link = ev.target;
     if (link.tagName !== 'A') return;
     console.log(link.textContent);
+
 //5.3
+
     if (link.classList.contains('active')) {
       link.classList.remove('active');
-      showingSubMenu = false;
+      //showingSubMenu = false;
       subMenuEl.style.top = '0';
       return;
-
     } 
-    //5.4
+
+//5.4
+
     topMenuLinks.forEach(function(link){
       link.classList.remove('active');
     });
-    // 5.5
+
+// 5.5
+
     link.classList.add('active');
+   
+
+//5.6
 
     const linkData = menuLinks.find(function(linkObj){
       return linkObj.text === link.textContent;
     });
-    //5.6***
-     showingSubMenu = 'subLinks' in linkData;
+ 
+//5.7
 
-    if (!showingSubMenu) mainEl.innerHTML = 
-    `<h1>${link.textContent}</h1>`;
+    showingSubMenu = 'subLinks' in linkData;
 
-    if (showingSubMenu) {
-      buildSubMenu(linkData.subLinks);
-      subMenuEl.style.top = '100%';
+    
+    if(showingSubMenu){
+      let sublinks = linkData.subLinks;
+      buildSubMenu(sublinks);
+      subMenuEl.style.top = '100%';  
     } else {
       subMenuEl.style.top = '0';
+      mainEl.innerHTML = `<h1>${link.textContent}</h1>`; //6.4
     }
+//5.8
+
   });
   function buildSubMenu(subLinks) {
     subMenuEl.innerHTML = '';
@@ -100,19 +116,31 @@ var menuLinks = [
       subMenuEl.appendChild(newLinkEl)
       });
   }
-  
+//6.0
+
 subMenuEl.addEventListener('click', function(ev){
   ev.preventDefault();
   const link = ev.target;
   if (link.tagName != 'A') return;
   console.log(link.textContent);
 
+//6.1
+
   showingSubMenu = false;
   subMenuEl.style.top = '0';
+
+//6.2
 
   topMenuLinks.forEach(function(link){
     link.classList.remove('active');
   });
+
+//6.3
+
   mainEl.innerHTML = `<h1>${link.textContent}</h1>`;
 });
+
+//6.4 see line 105
+
+
 
