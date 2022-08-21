@@ -1,4 +1,5 @@
 //Menu data structure
+//PerScholas W4D2 DOM Lab: SEI Rocks
 var menuLinks = [
   {text: 'about', href: '/about'},
   {text: 'catalog', href: '#', subLinks: [
@@ -39,7 +40,7 @@ var menuLinks = [
     topMenuEl.appendChild(newAnchor)
   }
   // 
-  const subMenuEl = document.getElementById('sub-menu');
+  const subMenuEl = document.getElementById('sub-menu'); // subLinks lines: 5,10,15
 
   subMenuEl.style.height = '100%';
 
@@ -107,13 +108,15 @@ var menuLinks = [
 //5.8
 
   });
+  //Code the buildSubMenufunction so that it:
   function buildSubMenu(subLinks) {
-    subMenuEl.innerHTML = '';
-    subLinks.forEach(function(link){
-      const newLinkEl = document.createElement('a');
-      newLinkEl.setAttribute('href', link.href)
-      newLinkEl.textContent = link.text
-      subMenuEl.appendChild(newLinkEl)
+    subMenuEl.innerHTML = ''; //Clears the contents of subMenuEl with empty quotations
+    subLinks.forEach(function(link){  //Iterates over the subLinks array passed as an argument; and for each "link" object:
+      const newLinkEl = document.createElement('a'); // Create an <a>element.
+      //On the new element, add an href attribute('href') with value set to the href property of the "link" object (link.href) - line 116 
+      newLinkEl.setAttribute('href', link.href)  //href attribute specifies the URL of the page the link goes to; see lines: 4,5,6,8, etc
+      newLinkEl.textContent = link.text //Set the new element's content to the value of the textproperty of the "link" object.
+      subMenuEl.appendChild(newLinkEl) //Append the new element to the subMenuElelement.
       });
   }
 //6.0
