@@ -113,7 +113,7 @@ var menuLinks = [
     subMenuEl.innerHTML = ''; //Clears the contents of subMenuEl with empty quotations
     subLinks.forEach(function(link){  //Iterates over the subLinks array passed as an argument; and for each "link" object:
       const newLinkEl = document.createElement('a'); // Create an <a>element.
-      //On the new element, add an href attribute('href') with value set to the href property of the "link" object (link.href) - line 116 
+      //On the new element, add an href attribute('href') with value set to the href property of the "link" object (link.href) - line 117 
       newLinkEl.setAttribute('href', link.href)  //href attribute specifies the URL of the page the link goes to; see lines: 4,5,6,8, etc
       newLinkEl.textContent = link.text //Set the new element's content to the value of the textproperty of the "link" object.
       subMenuEl.appendChild(newLinkEl) //Append the new element to the subMenuElelement.
